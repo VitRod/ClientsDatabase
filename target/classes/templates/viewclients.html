@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+			<title>CLIENTS LIST</title>
+			 <link rel="stylesheet" th:href="@{/css/clientsmain.css}"  />
+			 <link rel="stylesheet" th:href="@{/css/custom.css}"/>
+</head>
+<body>
+	<h1 align="center">Clients List</h1>
+	<table id="t02" cellpadding="2">
+		<tr>
+			<th> <a href="/register"><h2>Home Page:Register New Client</h2></a>   
+			
+			</th>
+			
+			<th> <a align="right" th:href="@{/deleteallclients}"><h2> Delete All Clients</h2></a></th>
+		</tr>
+	
+	</table>
+
+	<form>
+		<table id="t01" border="2" width="70%" cellpadding="2">
+			<tr>
+				<th>Id</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Sex</th>
+				<th>Date Modified</th>
+				<th>Email</th>
+				<th>Section</th>
+				<th>Country</th>
+				<th> --- </th>
+				<th> --- </th>
+			</tr>
+
+			<tr th:each="client: ${list}">
+				<td th:text="${client.id}"></td>
+				<td th:text="${client.firstName}"></td>
+				<td th:text="${client.lastName}"></td>
+				<td th:text="${client.sex}"></td>
+				<td th:text="${client.createdAt}"></td>
+				<td th:text="${client.email}"></td>
+				<td th:text="${client.section}"></td>
+				<td th:text="${client.country}"></td>
+				
+				<td> <a th:href="@{'/editclient/' + ${client.id}}">EDIT</a>  </td>
+				<td> <a th:href="@{'/deleteclient/' + ${client.id}}"> DELETE</a> </td>
+			</tr>
+
+
+		</table>
+	</form>
+</body>
+</html>
